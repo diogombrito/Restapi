@@ -1,0 +1,46 @@
+<div>
+    <div class="alert alert-danger" *ngIf="error">
+      <p>{{ error }}</p>
+    </div>
+
+<nav *ngIf="(isLoginMode)" class="container">
+
+  <div  class="row">
+  <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
+    <div class="card card-signin my-5">
+      <div style="background-color:rgb(216, 229, 245)" class="card-body">
+    <h3 style="text-align: center;">Login</h3>
+<br>
+
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm)">
+
+      <div class="form-label-group">
+        <label for="username">
+          Username
+        </label>
+        <input id="username" type="username" formControlName="username"     class="form-control"
+        ngModel
+        name="username"
+        required
+        username >
+      </div>
+
+      <div class="form-label-group">
+        <label for="Password">
+          Password
+        </label>
+        <input id="Password" type="password" formControlName="password"           class="form-control"
+        ngModel
+        name="password"
+        required
+        minlength="6">
+      </div>
+<br>
+      <button style="margin-top: 2%;"class="btn btn-primary" type="submit">Login</button>
+    </form>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</div>

@@ -1,0 +1,18 @@
+
+<nav class="navbar navbar-toggleable-md navbar-light" >
+  <div routerLinkActive="active" class="nav-item" >
+    <a style="color:white" class="nav-link" routerLink="/login">App <span class="sr-only">(current)</span></a>
+  </div>
+  <div routerLinkActive="active" class="nav-item " >
+    <a style="color:white" class="nav-link"
+    *ngIf="isAuthenticated" routerLink="/manage">Manage <span class="sr-only">(current)</span></a>
+  </div>
+<div>
+
+
+  <div routerLinkActive="active" class="nav-item ">
+    <a style="color:white" class="nav-link"(click)="ngOnDestroy()" routerLink="/"
+    *ngIf="isAuthenticated">Logout <span class="sr-only">(current)</span></a>
+  </div>
+</div>
+</nav>

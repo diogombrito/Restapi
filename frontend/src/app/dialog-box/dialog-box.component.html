@@ -1,0 +1,50 @@
+<h1 mat-dialog-title><strong>{{action}} Users</strong></h1>
+<div mat-dialog-content >
+  <nav *ngIf="action != 'Delete'; else elseTemplate">
+      <mat-form-field>
+          <input placeholder="{{action}} Username" required="true" matInput  [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+          [(ngModel)]="local_data.username" >
+      </mat-form-field>
+      <mat-form-field *ngIf="action != 'Update';">
+        <input placeholder="{{action}} password" type="password" required="true" matInput [(ngModel)]="local_data.password" >
+    </mat-form-field>
+    <mat-form-field>
+      <input placeholder="{{action}} name"  matInput [(ngModel)]="local_data.name">
+    </mat-form-field>
+      <mat-form-field>
+        <input placeholder="{{action}} family"  matInput [(ngModel)]="local_data.family">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input placeholder="{{action}} birth" matInput [(ngModel)]="local_data.birth">
+      </mat-form-field>
+      <mat-form-field>
+        <input placeholder="{{action}} Role" matInput [(ngModel)]="local_data.admin">
+    </mat-form-field>
+  </nav>
+
+
+  <ng-template #elseTemplate>
+    Sure to delete <b>{{local_data.username}}</b>?
+  </ng-template>
+</div>
+<div mat-dialog-actions style="padding-left:25px">
+<!--    <button mat-button (click)="doAction()" mat-flat-button color="warn" >{{action}}</button>
+ -->
+ <nav *ngIf="action == 'Add'">
+
+ <button mat-button (click)="doAction()" mat-flat-button color="primary" [disabled]="!(local_data.username && local_data.password)"  >
+  {{action}}
+ </button>
+</nav>
+<button  *ngIf="action == 'Update';"style ="margin-right:10px;" [disabled]="!(local_data.username)" mat-button (click)="doAction()" mat-flat-button color="primary">
+  {{action}}
+ </button>
+
+  <button  *ngIf="action == 'Delete';"style ="margin-right:10px;"  mat-button (click)="doAction()" mat-flat-button color="primary">
+    {{action}}
+   </button>
+
+
+  <button style ="margin-left:10px;" mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>
